@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Shortened URL</title>
+    <style>
+      /* Reset and global styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background: linear-gradient(135deg, #ffe6f7, #d9f0ff);
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .form-container {
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 500px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #4d4dff;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 2px solid #4d4dff;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        background: #4d4dff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #3333cc;
+      }
+      p {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #4d4d4d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <a
+        href="/"
+        style="
+          text-decoration: none;
+          padding: 2px 10px;
+          background-color: #4d4dff;
+          color: white;
+          border-radius: 5px;
+        "
+        >Back</a
+      >
+      <h1>Edit Shortened URL</h1>
+      <form action="" method="post">
+        {% csrf_token %}
+        <label for="shorten_url">Shorten URL:</label>
+        {{ edit_form.shorten_url }}
+        <label for="url">New URL:</label>
+        {{ edit_form.url }}
+        <button type="submit">Submit</button>
+      </form>
+      {% if status_code == 201 %}
+      <p style="color: rgb(7, 210, 7);">Updated Values</p>
+      {% elif status_code == 404 %}
+      <p style="color: red;">Url Not Found</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

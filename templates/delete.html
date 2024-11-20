@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        color: #333;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      label {
+        font-size: 18px;
+        margin-bottom: 8px;
+        display: inline-block;
+      }
+
+      input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 2px solid #4d4dff;
+        border-radius: 5px;
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #4d4dff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background-color: #3b3bde;
+      }
+
+      p {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #4d4d4d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a
+        href="/"
+        style="
+          text-decoration: none;
+          padding: 2px 10px;
+          background-color: #4d4dff;
+          color: white;
+          border-radius: 5px;
+        "
+        >Back</a
+      >
+      <form action="" method="post">
+        {% csrf_token %}
+        <label for="">Shorten URL: </label>
+        {{ delete_form.shorten_url }}
+        <button type="submit">Delete URL</button>
+      </form>
+      {% if status == 200 %}
+      <p style="color: green">Deleted URL</p>
+      {% elif status == 404 %}
+      <p style="color: red">URL not Found</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

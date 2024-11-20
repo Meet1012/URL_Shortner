@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shorten URL</title>
+    <style>
+      /* Reset and global styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background: linear-gradient(135deg, #ffe6f7, #d9f0ff);
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .form-container {
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 500px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #4d4dff;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 2px solid #4d4dff;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        background: #4d4dff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #3333cc;
+      }
+
+      p {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #4d4d4d;
+      }
+
+      p span {
+        color: #ff3385;
+        font-weight: bold;
+      }
+      
+      .button-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      a{
+        text-decoration: none;
+        width: 33%;
+        padding: 8px 20px;
+        border-radius: 10px;
+        color: white
+      }
+
+      a.update{
+        background-color: #4ff17d;
+      }
+      a.update:hover{
+        background-color: #33ff81;
+      }
+      a.fetch{
+        background-color: #c84ff1;
+      }
+      a.fetch:hover{
+        background-color: #bc1ef0;
+      }
+      a.delete{
+        background-color: #f14f4f;
+      }
+      a.delete:hover{
+        background-color: #f04f1e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Shorten Your URL</h1>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <label for="url">URL:</label>
+        {{ create_form.url }}
+        <button type="submit">Submit</button>
+      </form>
+      <div class="button-container">
+        <a href="/update" class="update">Update</a>
+        <a href="/get" class="fetch">Fetch</a>
+        <a href="/delete" class="delete">Delete</a>
+      </div>
+      {% if short_url is not None %}
+      <p>Shorten URL: <span>{{ short_url }}</span></p>
+      {% endif %}
+    </div>
+  </body>
+</html>
