@@ -5,7 +5,7 @@
 
 A Django-based web application for creating, retrieving, updating, and deleting shortened URLs. This app provides functionalities to map long URLs to short codes, fetch original URLs using the short code, and manage the stored URLs.
 
-(Project URL)[https://roadmap.sh/projects/url-shortening-service]
+[Project URL](https://roadmap.sh/projects/url-shortening-service)
 
 ## ✨ Features
 
